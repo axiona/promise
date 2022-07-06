@@ -2,15 +2,27 @@
   "name": "@alirya/promise",
   "version": "0.1.0",
   "description": "Typescript promise",
+  "publishConfig": {
+    "directory": "dist"
+  },
+  "author": {
+    "name": "Andika Candra"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/alirya/promise",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alirya/promise"
+  },
   "dependencies": {
     "tslib": "^2.3.1",
     "@alirya/function": "^0.16.0"
   },
   "devDependencies": {
-    "@types/jasmine": "^3.10.2",
+    "@types/jasmine": "^4.0.3",
     "cpy-cli": "^3.1.1",
     "esm": "^3.2.25",
-    "jasmine": "=3.10.0",
+    "jasmine": "^4.2.1",
     "jasmine-ts-console-reporter": "^3.1.1",
     "json-properties-remover": "^0.1.3",
     "mkdirp": "^1.0.4",
@@ -23,27 +35,34 @@
     "tsc-fancy": "^1.1.2",
     "ts-toolbelt": "^9.6.0",
     "utility-types": "^3.10.0",
-    "package-version-git-tag": "^3.0.0"
+    "package-version-git-tag": "^3.0.0",
+    "cpx2": "^4.2.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.5",
+    "@typescript-eslint/parser": "^5.30.5",
+    "eslint": "^8.19.0",
+    "eslint-import-resolver-typescript": "^3.2.1",
+    "eslint-plugin-import": "^2.26.0"
   },
+  "private": true,
   "scripts": {
     "spec-run-js": "node -r esm node_modules/jasmine/bin/jasmine.js --config=./jasmine.json",
-    "spec-run": "node -r esm node_modules/jasmine/bin/jasmine.js --config=./jasmine.json --reporter=jasmine-ts-console-reporter",
+    "spec-run": "jasmine --config=./jasmine.json",
     "spec-run-debug": "node -r esm node_modules/jasmine/bin/jasmine.js --config=./jasmine-debug.json --reporter=jasmine-ts-console-reporter",
     "spec": "npm-run-all spec-compile spec-run",
     "spec-compile": "npm-run-all _spec-compile-script spec-cleanup",
     "spec-compile-watch": "npm-run-all --sequential _spec-ensure-directory --parallel _spec-compile-watch-script spec-cleanup-watch",
-    "compile": "npm-run-all _compile-script cleanup",
+    "compile": "npm-run-all _compile-script cleanup _compile-asset",
     "cleanup": "ts-cleaner --verbose --dist=dist --src=src",
     "cleanup-watch": "ts-cleaner --verbose --dist=dist --src=src --watch",
     "spec-cleanup": "ts-cleaner --verbose --dist=dist-spec --src=spec",
     "spec-cleanup-watch": "ts-cleaner --verbose --dist=dist-spec --src=spec --watch",
-    "compile-watch": "npm-run-all --sequential _compile-ensure-directory --parallel _compile-script-watch cleanup-watch",
-    "release": "remove-json-properties ./dist/package.json private",
+    "compile-watch": "npm-run-all --sequential _compile-ensure-directory --parallel _compile-script-watch cleanup-watch _compile-asset-watch",
+    "release": "npm publish ./dist",
     "postrelease": "npm publish --access=public ./dist",
-    "prerelease": "npm-run-all _release-remove-compile-cache compile _release_copy-meta-files",
+    "prerelease": "npm-run-all _release-remove-compile-cache compile",
     "postpublish": "rimraf package.json package-lock.json LICENSE Readme.md .npmignore",
-    "lint": "tslint --project ./tslint.json",
-    "lint-fix": "tslint --project ./tslint.json --fix",
+    "lint": "eslint src spec",
+    "lint-fix": "eslint src spec --fix",
     "doc-generate": "npm-run-all _doc-clean _doc-generate",
     "git-tag": "package-version-git-tag",
     "git-tag-push": "package-version-git-tag --push",
@@ -56,19 +75,10 @@
     "_release_copy-meta-files": "cpy package.json package-lock.json LICENSE Readme.md .npmignore dist",
     "_release-remove-compile-cache": "rimraf ./dist/compiler-cache.json",
     "_doc-generate": "typedoc --entryPointStrategy expand ./src --out docs",
-    "_doc-clean": "rimraf docs"
+    "_doc-clean": "rimraf docs",
+    "prepublishOnly": "cd ../dist",
+    "_compile-asset": "cpx \"./{package.json,package-lock.json,LICENSE,Readme.md,.npmignore}\" ./dist/ --verbose",
+    "_compile-asset-watch": "cpx \"./{package.json,package-lock.json,LICENSE,README.md,.npmignore}\" ./dist/ --verbose --watch"
   },
-  "publishConfig": {
-    "directory": "dist"
-  },
-  "author": {
-    "name": "Andika Candra"
-  },
-  "private": true,
-  "license": "Apache-2.0",
-  "homepage": "https://github.com/alirya/promise",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/alirya/promise"
-  }
+  "type": "module"
 }

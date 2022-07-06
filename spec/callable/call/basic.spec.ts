@@ -1,5 +1,5 @@
-import MapPromises from '../map-promises';
-import {CallParameters} from '../../../dist/callable/call';
+import MapPromises from '../map-promises.js';
+import {CallParameters} from '../../../dist/callable/call.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
