@@ -1,4 +1,4 @@
-import Resolve from "../../../dist/object/resolve";
+import Resolve, {ResolveParameters} from "../../../dist/object/resolve";
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
@@ -15,7 +15,7 @@ describe('test', function() {
 
     it('value', function(done) {
 
-        const source = Resolve(type);
+        const source = ResolveParameters(type, ['number', 'string', 'boolean']);
 
         source.then((result)=>{
 
