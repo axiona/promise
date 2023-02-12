@@ -1,4 +1,4 @@
-import Callable from '@alirya/function/callable';
+import Callable from '@alirya/function/callable.js';
 
 export function * MapParameters<
     Argument extends unknown[],

@@ -1,5 +1,5 @@
-import Callable from '@alirya/function/callable';
-import Argument from '@alirya/function/argument/argument';
+import Callable from '@alirya/function/callable.js';
+import Argument from '@alirya/function/argument/argument.js';
 
 export async function SynchronousParameters<
     Callback extends Callable,

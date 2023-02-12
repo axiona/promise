@@ -1,5 +1,5 @@
-import MapPromises from '../map-promises';
-import {ConcurrencyParameters} from '../../../dist/callable/concurrency';
+import MapPromises from '../map-promises.js';
+import {ConcurrencyParameters} from '../../../dist/callable/concurrency.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

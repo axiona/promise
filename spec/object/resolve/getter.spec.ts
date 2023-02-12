@@ -1,5 +1,5 @@
-import Resolve, {ResolveParameters} from "../../../dist/object/resolve";
-import Readable from '@alirya/object/property/boolean/readable';
+import Resolve, {ResolveParameters} from '../../../dist/object/resolve.js';
+import Readable from '@alirya/object/property/boolean/readable.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

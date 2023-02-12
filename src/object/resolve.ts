@@ -1,6 +1,6 @@
-import InferResolve from '../infer-resolve';
-import Resolved from "./resolved";
-import Union from "../union";
+import InferResolve from '../infer-resolve.js';
+import Resolved from './resolved.js';
+import Union from '../union.js';
 import {List} from "ts-toolbelt";
 
 export function ResolveParameters<

@@ -1,5 +1,5 @@
-import MapPromises from '../map-promises';
-import {AsynchronousParameters} from '../../../dist/callable/asynchronous';
+import MapPromises from '../map-promises.js';
+import {AsynchronousParameters} from '../../../dist/callable/asynchronous.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 

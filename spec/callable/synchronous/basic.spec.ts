@@ -1,5 +1,5 @@
-import MapPromises from '../map-promises';
-import {SynchronousParameters} from '../../../dist/callable/synchronous';
+import MapPromises from '../map-promises.js';
+import {SynchronousParameters} from '../../../dist/callable/synchronous.js';
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
 
