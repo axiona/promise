@@ -9,7 +9,7 @@ export default class Pool {
 
     constructor(public concurrent: number = 1) {}
 
-    add<Return>(promiseFactory: Callable<[], Promise<Return>>) : void {
+    add(promiseFactory: Callable<[], Promise<any>>) : void {
 
         this.pools.push(promiseFactory);
         this.execute();
