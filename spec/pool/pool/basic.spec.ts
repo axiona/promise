@@ -1,17 +1,9 @@
 import Pool from "../../../dist/pool/pool.js";
+import Timeout from "../../../dist/timeout.js";
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 10 * 1000;
 
 it('force console log', () => { spyOn(console, 'log').and.callThrough();});
-
-
-function Timeout(second: number) : Promise<void> {
-
-    return new Promise(resolve => {
-
-        setTimeout(resolve, second * 1000);
-    });
-}
 
 function CurrentTimestamp() : number {
 
@@ -27,7 +19,7 @@ describe('test', function() {
     let data = new Map<number, number>();
 
     for(let i = 1; i <=5; i++) {
-        pool.add(() => Timeout(1).then(() => {
+        pool.append(() => Timeout(1).then(() => {
             data.set(i, CurrentTimestamp());
         }));
     }
@@ -57,7 +49,7 @@ describe('test', function() {
     let data = new Map<number, number>();
 
     for(let i = 0; i <=10; i++) {
-        pool.add(() => Timeout(1).then(() => {
+        pool.append(() => Timeout(1).then(() => {
             data.set(i, CurrentTimestamp());
         }));
     }

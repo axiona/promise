@@ -9,9 +9,15 @@ export default class Pool {
 
     constructor(public concurrent: number = 1) {}
 
-    add(promiseFactory: Callable<[], Promise<any>>) : void {
+    append(...promiseFactory: Callable<[], Promise<any>>[]) : void {
 
-        this.pools.push(promiseFactory);
+        this.pools.push(...promiseFactory);
+        this.execute();
+    }
+
+    prepend(...promiseFactory: Callable<[], Promise<any>>[]) : void {
+
+        this.pools.unshift(...promiseFactory);
         this.execute();
     }
 
