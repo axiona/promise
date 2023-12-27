@@ -1,15 +1,15 @@
 {
+  "esm": {
+    "cache": false
+  },
   "name": "@axiona/promise",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "description": "Typescript promise",
   "publishConfig": {
     "directory": "dist"
   },
   "author": {
     "name": "Andika Candra"
-  },
-  "esm": {
-    "cache": false
   },
   "license": "Apache-2.0",
   "homepage": "https://github.com/axiona/promise",
@@ -60,9 +60,7 @@
     "spec-cleanup-watch": "ts-cleaner --verbose --dist=dist-spec --src=spec --watch",
     "compile-watch": "npm-run-all --sequential _compile-ensure-directory --parallel _compile-script-watch cleanup-watch _compile-asset-watch",
     "release": "npm publish ./dist",
-    "postrelease": "npm publish --access=public ./dist",
     "prerelease": "npm-run-all _release-remove-compile-cache compile",
-    "postpublish": "rimraf package.json package-lock.json LICENSE Readme.md .npmignore",
     "lint": "eslint .",
     "lint-fix": "eslint --fix .",
     "doc-generate": "npm-run-all _doc-clean _doc-generate",
