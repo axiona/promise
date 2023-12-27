@@ -1,5 +1,5 @@
-import Callable from '@alirya/function/callable.js';
-import Argument from '@alirya/function/argument/argument.js';
+import Callable from '@axiona/function/callable.js';
+import Argument from '@axiona/function/argument/argument.js';
 
 export function CallParameters<
     Callback extends Callable,
