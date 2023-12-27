@@ -1,6 +1,6 @@
 {
   "name": "@axiona/promise",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Typescript promise",
   "publishConfig": {
     "directory": "dist"
@@ -19,8 +19,8 @@
   },
   "dependencies": {
     "tslib": "^2.5.0",
-    "@axiona/function": "^0.17.1",
-    "@axiona/object": "^0.38.1"
+    "@axiona/function": "^0.18.0",
+    "@axiona/object": "^0.39.0"
   },
   "devDependencies": {
     "@types/jasmine": "^3.10.2",
